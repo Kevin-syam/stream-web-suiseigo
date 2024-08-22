@@ -1,13 +1,13 @@
 import InputLabel from "@/Components/InputLabel";
-import Button from "@/Components/Button";
 import TextInput from "@/Components/TextInput";
+import Button from "@/Components/Button";
 import { Link, Head } from "@inertiajs/react";
+import React from "react";
 
-export default function Login() {
-    // <!-- Desktop Only -->
+const Register = () => {
     return (
         <>
-            <Head title="Sign In" />
+            <Head title="Sign Up" />
             <div className="mx-auto max-w-screen min-h-screen bg-black text-white md:px-10 px-3">
                 <div className="fixed top-[-50px] hidden lg:block">
                     <img
@@ -21,7 +21,7 @@ export default function Login() {
                         <img src="/images/moonton-white.svg" alt="" />
                         <div className="my-[70px]">
                             <div className="font-semibold text-[26px] mb-3">
-                                Welcome Back
+                                Sign Up
                             </div>
                             <p className="text-base text-[#767676] leading-7">
                                 Explore our new movies and get <br />
@@ -32,49 +32,58 @@ export default function Login() {
                             <div className="flex flex-col gap-6">
                                 <div>
                                     <InputLabel
+                                        forinput="fullname"
+                                        value="Full Name"
+                                    />
+                                    <TextInput
+                                        type="text"
+                                        name="fullname"
+                                        placeholder="Your fullname..."
+                                        defaultValue="Your React"
+                                    />
+                                </div>
+                                <div>
+                                    <InputLabel
                                         forinput="email"
                                         value="Email Address"
                                     />
-
                                     <TextInput
                                         type="email"
                                         name="email"
-                                        placeholder="Email Address"
+                                        placeholder="Your Email Address"
+                                        defaultValue="sui@mail.com"
                                     />
                                 </div>
                                 <div>
                                     <InputLabel
                                         forinput="password"
-                                        value="password"
+                                        value="Password"
                                     />
-
                                     <TextInput
                                         type="password"
                                         name="password"
-                                        placeholder="Password"
+                                        placeholder="Your Password"
+                                        defaultValue="eeeeeeeeeeeeeee"
                                     />
                                 </div>
                             </div>
                             <div className="grid space-y-[14px] mt-[30px]">
-                                <Button type="button" variant="primary">
+                                <Button variant="primary">
                                     <span className="text-base font-semibold">
-                                        Start Watching
+                                        Sign Up
                                     </span>
                                 </Button>
-                                <Link href={route("prototype.register")}>
-                                    <Button
-                                        type="button"
-                                        variant="light-outline"
-                                    >
+
+                                <Link href={route("prototype.login")}>
+                                    <Button variant="light-outline">
                                         <span className="text-base text-white">
-                                            Create New Account
+                                            Sign In to My Account
                                         </span>
                                     </Button>
                                 </Link>
-
                                 {/* <!-- <button type="submit" class="rounded-2xl bg-alerange py-[13px] text-center">
                             <span class="text-base font-semibold">
-                                Start Watching
+                                Sign Up
                             </span>
                         </button> --> */}
                             </div>
@@ -84,4 +93,6 @@ export default function Login() {
             </div>
         </>
     );
-}
+};
+
+export default Register;

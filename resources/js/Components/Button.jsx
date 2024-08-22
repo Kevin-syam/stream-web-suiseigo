@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-PrimaryButton.propTypes = {
+Button.propTypes = {
     type: PropTypes.oneOf(["button", "submit", "reset"]),
     className: PropTypes.string,
     variant: PropTypes.oneOf([
@@ -14,7 +14,7 @@ PrimaryButton.propTypes = {
     children: PropTypes.node,
 };
 
-export default function PrimaryButton({
+export default function Button({
     type = "submit",
     className = "",
     variant = "primary",
