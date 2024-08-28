@@ -1,5 +1,5 @@
 .btn-primary {
-    @apply bg-alerange text-white;
+    @apply bg-blue-bold text-white;
 }
 
 .btn-warning {

@@ -1,5 +1,5 @@
 .input-primary {
-    @apply focus:bg-form-bg bg-form-bg focus:outline-alerange focus:outline-none;
+    @apply focus:bg-form-bg bg-form-bg focus:outline-blue-bold focus:outline-none;
 }
 
 .input-error {
@@ -7,6 +7,6 @@
 }
 
 .input-primary-outline {
-    @apply bg-[#fff] focus:bg-white border-alerange focus:border-alerange;
-    @apply file:bg-alerange file:text-white file:rounded-md file:p-2;
+    @apply bg-[#fff] focus:bg-white border-blue-bold focus:border-blue-bold;
+    @apply file:bg-blue-bold file:text-white file:rounded-md file:p-2;
 }

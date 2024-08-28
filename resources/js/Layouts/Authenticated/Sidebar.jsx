@@ -6,7 +6,11 @@ export default function Sidebar() {
         <aside className="fixed z-50 w-[300px] h-full">
             <div className="flex flex-col p-[30px] pr-0 border-r border-gray-[#F1F1F1] overflow-y-auto h-full">
                 <a href="/">
-                    <img src="/images/moonton.svg" alt="" />
+                    <img
+                        src="/images/logo-no-background.png"
+                        className="w-[15rem]"
+                        alt=""
+                    />
                 </a>
                 <div className="links flex flex-col mt-[60px] h-full gap-[50px]">
                     {/* Menu */}
@@ -170,7 +174,7 @@ export default function Sidebar() {
                                 12 of 30 hari
                             </div>
                             <div className="rounded-full w-full h-[6px] bg-[#333333]">
-                                <div className="rounded-full h-full w-9/12 bg-alerange"></div>
+                                <div className="rounded-full h-full w-9/12 bg-yellow-500"></div>
                             </div>
                         </div>
                     </div>

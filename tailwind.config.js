@@ -20,6 +20,9 @@ export default {
                 "gray-1": "#B4B4B4",
                 "gray-2": "#E2E0E0",
                 "form-bg": "#212121",
+                "blue-bold": "#0B60B0",
+                "blue-light": "#40A2D8",
+                pastel: "#F0EDCF",
             },
             screens: {
                 laptopLg: "1160px",
