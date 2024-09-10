@@ -102,14 +102,14 @@ export default function SubscriptionCard({
                     </div>
 
                     {/* Bottom: CTA Button */}
-                    <div>
-                        <Link href="payment_status/success.html">
-                            <Button type="button" variant="primary">
-                                <span className="text-base font-semibold">
-                                    Subscribe Now
-                                </span>
-                            </Button>
-                        </Link>
+                    <div onClick={onSelectSubsciption}>
+                        {/* <Link href="payment_status/success.html"> */}
+                        <Button type="button" variant="primary">
+                            <span className="text-base font-semibold">
+                                Subscribe Now
+                            </span>
+                        </Button>
+                        {/* </Link> */}
                     </div>
                 </div>
             )}
