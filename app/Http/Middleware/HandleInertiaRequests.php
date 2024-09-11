@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
+use Tighten\Ziggy\Ziggy;
+// use Session;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -56,6 +58,13 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
                 'activePlan' => $this->activePlan(),
             ],
+            'flashMessage' => [
+                'message' => $request->session()->get('message'),
+                'type' => $request->session()->get('type'),
+            ],
+            'ziggy' => function(){
+                return (new Ziggy)->toArray();
+            },
         ];
     }
 }
