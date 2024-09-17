@@ -26,6 +26,7 @@ const TextInput = forwardRef(
         return (
             <input
                 {...props}
+                defaultValue={defaultValue}
                 type={type}
                 className={
                     `rounded-2xl bg-form-bg py-[13px] px-7 w-full input-${variant} ` +

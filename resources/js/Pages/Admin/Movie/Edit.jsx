@@ -5,15 +5,11 @@ import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head, useForm } from "@inertiajs/react";
+import { Inertia } from "@inertiajs/inertia";
 
-export default function Create({ auth }) {
-    const { setData, post, processing, errors } = useForm({
-        name: "",
-        category: "",
-        video_url: "",
-        thumbnail: "",
-        rating: "",
-        is_featured: false,
+export default function Edit({ auth, movie }) {
+    const { data, setData, processing, errors } = useForm({
+        ...movie,
     });
 
     const onHandleChange = (event) => {
@@ -28,18 +24,21 @@ export default function Create({ auth }) {
     const submit = (e) => {
         e.preventDefault();
 
-        if (data.thumbnail === movie.thumbnail) {
+        if (!data.thumbnail || data.thumbnail === movie.thumbnail) {
             delete data.thumbnail;
         }
 
-        post(route("admin.dashboard.movie.store"));
+        Inertia.post(route("admin.dashboard.movie.update", movie.id), {
+            _method: "PUT",
+            ...data,
+        });
     };
 
     return (
         <Authenticated auth={auth}>
-            <Head title="Admin - Create Movie" />
+            <Head title="Admin - Update Movie" />
 
-            <h1 className="text-xl">Insert a new Movie</h1>
+            <h1 className="text-xl">Update Movie: {movie.name}</h1>
             <hr className="mb-4" />
             <form className="" onSubmit={submit}>
                 <div className="grid grid-cols-2 gap-4">
@@ -48,6 +47,7 @@ export default function Create({ auth }) {
                         <TextInput
                             type="text"
                             name="name"
+                            defaultValue={movie.name}
                             variant="primary-outline"
                             placeholder="Enter the name of Movie"
                             onChange={onHandleChange}
@@ -61,6 +61,7 @@ export default function Create({ auth }) {
                         <TextInput
                             type="text"
                             name="category"
+                            defaultValue={movie.category}
                             variant="primary-outline"
                             placeholder="Enter the Movie's Categories"
                             onChange={onHandleChange}
@@ -77,16 +78,17 @@ export default function Create({ auth }) {
                         <TextInput
                             type="url"
                             name="video_url"
+                            defaultValue={movie.video_url}
                             variant="primary-outline"
                             placeholder="Enter the Video URL of the Movie"
                             onChange={onHandleChange}
                             required
                         />
 
-                        <InputError
+                        {/* <InputError
                             message={errors.video_url}
                             className="mt-2"
-                        />
+                        /> */}
                     </div>
                     <div>
                         <InputLabel forinput="rating" value="Rating" />
@@ -94,24 +96,28 @@ export default function Create({ auth }) {
                             type="number"
                             min={1}
                             max={10}
+                            defaultValue={movie.rating}
                             name="rating"
                             variant="primary-outline"
                             placeholder="Enter the Rating of the Movie"
                             onChange={onHandleChange}
-                            required
                         />
 
                         <InputError message={errors.rating} className="mt-2" />
                     </div>
                     <div>
                         <InputLabel forinput="thumbnail" value="Thumbnail" />
+                        <img
+                            src={`/storage/${movie.thumbnail}`}
+                            alt=""
+                            className="w-40"
+                        />
                         <TextInput
                             type="file"
                             name="thumbnail"
                             variant="primary-outline"
                             placeholder="Insert Thumbnail of the Movie"
                             onChange={onHandleChange}
-                            required
                         />
 
                         <InputError
@@ -133,6 +139,7 @@ export default function Create({ auth }) {
                         onChange={(e) =>
                             setData("is_featured", e.target.checked)
                         }
+                        checked={movie.is_featured}
                     />
                 </div>
                 <div className="grid space-y-[14px] mt-4">
